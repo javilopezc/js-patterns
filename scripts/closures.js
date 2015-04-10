@@ -27,6 +27,17 @@ function myClosure () {
 }
 
 
+var myClosure2 = function () {
+  var date = new Date(),
+      myNestedFunc = function () {
+        return date.getMilliseconds();
+      };
+  return {
+    myNestedFunc: myNestedFunc
+  };
+}();
+
+
 window.onload = function () {
   // using a closure
   var output =
@@ -39,4 +50,6 @@ window.onload = function () {
     output.innerHTML += 
       '<br><br>' + closure();
   }, 1500);
+  
+  output.innerHTML += myClosure2.myNestedFunc();
 }
